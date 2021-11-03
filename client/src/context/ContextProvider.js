@@ -24,15 +24,12 @@ export const ContextProvider = ({ children }) => {
     }
 
     const fetchUser = async () => {
-        await fetch('http://localhost:8080/user')
-            .then(resp => resp.json())
-            .then(resp => {
-                if (Object.keys(resp).length > 0) {
-                    setUser(resp);
-                    setIsAuth(true);
-                }
-                setIsLoading(true);
-            })
+        const user = await apiService.getUser();
+        if (Object.keys(user).length > 0) {
+            setUser(user);
+            setIsAuth(true);
+        }
+        setIsLoading(true);
     }
 
     const countStatistics = (type) => {
@@ -56,6 +53,6 @@ export const ContextProvider = ({ children }) => {
     };
 
     return (
-        <Context.Provider value={value}>{children}</Context.Provider>
+        <Context.Provider value={value} > {children} </Context.Provider>
     )
 }

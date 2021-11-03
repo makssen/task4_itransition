@@ -17,12 +17,14 @@ let user = {};
 
 app.use(express.json());
 app.use(cors());
+app.set("trust proxy", 1);
 app.use(session({
     secret: 'secretcode',
     resave: true,
     saveUninitialized: true,
     cookie: {
-        secure: false,
+        sameSite: 'none',
+        secure: true,
         maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }));

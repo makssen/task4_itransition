@@ -12,7 +12,7 @@ export const Chat = () => {
     const { user, isLoadingMsg, messages, setMessages } = useContext(Context);
 
     const connect = () => {
-        socket.current = new WebSocket('ws://localhost:8080/messages');
+        socket.current = new WebSocket(`ws://react-chat-itra.herokuapp.com/messages`);
 
         socket.current.onopen = () => {
             setConnected(true);

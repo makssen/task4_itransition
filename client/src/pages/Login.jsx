@@ -11,7 +11,7 @@ export const Login = () => {
     const { isAuth, countStatistics } = useContext(Context);
 
     const login = (type) => {
-        window.open(`http://localhost:8080/auth/${type}`, '_self');
+        window.open(`https://react-chat-itra.herokuapp.com/auth/${type}`, '_self');
     }
 
     if (isAuth) return <Redirect to="/messages" />
